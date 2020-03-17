@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button{
+            font-size: 25px;
+            width: 50px;
+            height: 40px;
+        }
+        input{
+            width: 210px;
+            height: 60px;
+            font-size: 30px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<table border="1" style="align-items: center">
+    <tr>
+        <td colspan="4"><input type="text" id="display"/></td>
+    </tr>
+    <tr>
+        <td><button onclick="displayNumber(1)">1</button></td>
+        <td><button onclick="displayNumber(2)">2</button></td>
+        <td><button onclick="displayNumber(3)">3</button></td>
+        <td><button onclick="plus()">+</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="displayNumber(4)">4</button></td>
+        <td><button onclick="displayNumber(5)">5</button></td>
+        <td><button onclick="displayNumber(6)">6</button></td>
+        <td><button onclick="minus()">-</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="displayNumber(7)">7</button></td>
+        <td><button onclick="displayNumber(8)">8</button></td>
+        <td><button onclick="displayNumber(9)">9</button></td>
+        <td><button onclick="multiply()">x</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="Delete()">C</button></td>
+        <td><button onclick="displayNumber(0)">0</button></td>
+        <td><button onclick="equal()">=</button></td>
+        <td><button onclick="division()">/</button></td>
+    </tr>
+</table>
+<script>
+    let clickedOperator = false;
+    let calculate = 0;
+    let Xoatextbox = false;
+
+    let firstNumber;
+    let secondNumber;
+    let  result;
+    let display = document.getElementById("display");
+    console.log(calculate);
+    function displayNumber(number) {
+        if(Xoatextbox === true){
+            display.value = '';
+        }
+        if(clickedOperator === true){
+            display.value = number;
+            clickedOperator = false;
+        } else{
+            display.value += number;
+        }
+        console.log(firstNumber);
+        Xoatextbox = false;
+    }
+    function plus() {
+        clickedOperator = true;
+        firstNumber = display.value;
+        if(Xoatextbox === true){
+            display.value = '';
+        }
+        calculate = 1;
+        console.log(calculate);
+        Xoatextbox = false;
+    }
+    function minus() {
+        clickedOperator = true;
+        if(Xoatextbox === true){
+            display.value = '';
+        }
+        firstNumber = display.value;
+        calculate = 2;
+        console.log(calculate);
+        Xoatextbox = false;
+    }
+    function multiply() {
+        clickedOperator = true;
+        firstNumber = display.value;
+        if(Xoatextbox === true){
+            display.value = '';
+        }
+        calculate = 3;
+        console.log(calculate);
+        Xoatextbox = false;
+    }
+    function division() {
+        clickedOperator = true;
+        firstNumber = display.value;
+        if(Xoatextbox === true){
+            display.value = '';
+        }
+        calculate = 4;
+        console.log(calculate);
+        if(Xoatextbox === true){
+            display.value = '';
+        }
+        Xoatextbox = false;
+    }
+    function equal() {
+        if (calculate !== 0){
+            secondNumber = display.value;
+        }
+        console.log(firstNumber);
+        console.log(secondNumber);
+        switch (calculate) {
+            case 1:
+                result = parseInt(firstNumber) + parseInt(secondNumber);
+                break;
+            case 2:
+                result = parseInt(firstNumber) - parseInt(secondNumber);
+                break;
+            case 3:
+                result = parseInt(firstNumber) * parseInt(secondNumber);
+                break;
+            case 4:
+                result = parseInt(firstNumber) / parseInt(secondNumber);
+                break;
+        }
+        display.value ='';
+        display.value = result;
+        calculate = 0;
+        Xoatextbox = true;
+    }
+
+    function Delete() {
+        firstNumber = '';
+        secondNumber ='';
+        result='';
+        display.value = result;
+        calculate = 0;
+    }
+</script>
+</body>
+</html>
